@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  permit_number: MyString
+  owner_name: MyString
+  operating_name: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  zip4: MyString
+  county: MyString
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  permit_number: MyString
+  owner_name: MyString
+  operating_name: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  zip4: MyString
+  county: MyString
+  latitude: 1.5
+  longitude: 1.5

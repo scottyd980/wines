@@ -1,0 +1,65 @@
+<h1>
+<% if @winery.operating_name.empty? %>
+	<%= @winery.owner_name %>
+<% else %>
+	<%= @winery.operating_name %>
+<% end %>
+<small><%= @winery.city %>, <%= @winery.state %></small>
+
+<span class="pull-right">
+	<% if (@winery.id - 1) > 0 %>
+		<%= link_to raw('<i class="icon-arrow-left"></i> Previous'), winery_path(@winery.id - 1), :class=> 'btn' %>
+	<% end %>
+	<% if current_user %>
+		<%= link_to raw('<i class="icon-plus-sign icon-white"></i> Add To Tour'), new_winery_path.to_s + "/?id=" + @winery.id.to_s, :class => 'btn btn-success' %>
+	<% end %>
+	<% if (@winery.id + 1) < 6303 %>
+		<%= link_to raw('Next <i class="icon-arrow-right"></i>'), winery_path(@winery.id + 1), :class=> 'btn' %>
+	<% end %>
+</span>
+</h1>
+<hr>
+
+<div class="row">
+	<div class="span6">
+	
+		<h5><i class="icon-glass"></i> Winery Information</h5>
+		<hr style="margin-top: 5px; margin-bottom: 5px;">
+		
+		<div class="well">
+			Owner: <%= @winery.owner_name %><br/>
+			Permit: <%= @winery.permit_number %>
+			
+			
+		</div>
+	
+	</div>
+	<div class="span6">
+		
+		<h5><i class="icon-map-marker"></i> Location Information</h5>
+		<hr style="margin-top: 5px; margin-bottom: 5px;">
+		
+		<div class="well">
+			<%= @winery.street %><br/>
+			<%= @winery.city %>, <%= @winery.state %>, <%= @winery.zip %>
+		</div>
+		
+	
+	</div>
+</div>
+
+<div style="width:  100%; height:  300px;" id="winery-map"></div>
+
+<script>
+
+$(document).ready(function() {
+	
+	$("#winery-map").gMap({ controls: false, scrollwheel: false, markers: [{ latitude: <%= @winery.latitude %>, longitude: <%= @winery.longitude %> }],
+	zoom: 12 
+	});
+	
+});
+
+</script>
+
+
